@@ -19,5 +19,5 @@
         "colors": ""
     },
     "keywords": ["events", "emitter", "browser"],
-    "main": "wildemitter.js"
+    "main": "wildemitter.js"    
 }

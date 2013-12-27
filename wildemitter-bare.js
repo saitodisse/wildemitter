@@ -4,7 +4,8 @@ function WildEmitter() {
 
 // Listen on the given `event` with `fn`. Store a group name if present.
 WildEmitter.prototype.on = function (event, groupName, fn) {
-    var hasGroup = (arguments.length === 3),
+        // ignores other parameters
+    var hasGroup = (arguments.length >= 3),
         group = hasGroup ? arguments[1] : undefined, 
         func = hasGroup ? arguments[2] : arguments[1];
     func._groupName = group;

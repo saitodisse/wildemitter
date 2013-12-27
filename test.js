@@ -63,3 +63,25 @@ exports['Test group binding and unbinding'] = function (test) {
     test.equal(count, 1);
     test.done();
 };
+
+exports['Several parameters'] = function (test) {
+    var count = 0, 
+        cb = function () {
+            return function () {count++}
+        };
+
+    // test our groups
+    orange.on('test', 'lumped', cb(), 'test -> cb()');
+    orange.on('test', 'lumped', cb(), 'test -> cb()');
+    orange.on('test', 'lumped', cb(), 'test -> cb()');
+    orange.on('test', cb());
+    orange.test();
+    test.equal(count, 4);
+
+    count = 0;
+    orange.releaseGroup('lumped');
+    orange.test();
+
+    test.equal(count, 1);
+    test.done();
+};
